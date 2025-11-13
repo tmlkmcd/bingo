@@ -1,0 +1,72 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+html, body {
+    margin: 2px;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.grid > button {
+    border: 1px solid brown;
+    padding: 2px;
+    align-content: center;
+    border-radius: 0;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid > button > span {
+    position: relative;
+    z-index: 50;
+}
+
+.grid > button > div {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 30;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.grid > button > div.cross {
+    opacity: 15%;
+}
+
+@media (orientation: portrait) {
+    .grid > button {
+        height: 150px;
+        font-size: 0.7rem;
+    }
+
+    .grid > button > div {
+        width: 100%;
+    }
+}
+
+@media (orientation: landscape) {
+    .grid > button {
+        height: 105px;
+        font-size: 1.05rem;
+    }
+
+    .grid > button > div {
+
+    }
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
