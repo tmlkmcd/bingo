@@ -4,7 +4,7 @@ import clsx from "clsx";
 import "./App.css";
 import { Tick } from "./icons/Tick.tsx";
 import { Cross } from "./icons/Cross.tsx";
-import { clearPersist, loadPersist, savePersist } from "./storage.ts";
+import { loadPersist, savePersist } from "./storage.ts";
 
 const cardItems: string[] = [
   "We go to De Garre",
