@@ -25,22 +25,56 @@ html, body {
     overflow: hidden;
 }
 
+.grid > button {
+
+}
+
 .grid > button > span {
     position: relative;
     z-index: 50;
+    color: red;
+}
+
+.grid > button.active > span {
+    color: green;
 }
 
 .grid > button > div {
     position: absolute;
-    top: 4px;
-    left: 4px;
     z-index: 30;
-    max-height: 100%;
-    max-width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0.5;
+    background-position: center center;
+}
+.grid > button.active > div {
+    opacity: 1;
 }
 
-.grid > button > div.cross {
-    opacity: 15%;
+.grid > button.felix > div {
+    background-image: url('./images/felix.jpg');
+}
+
+.grid > button.sarah > div {
+    background-image: url('./images/sarah.jpg');
+}
+
+.grid > button.lydia > div {
+    background-image: url('./images/lydia.jpg');
+}
+
+.grid > button.tommy > div {
+    background-image: url('./images/tommy.jpg');
+}
+
+.grid > button.kieran > div {
+    background-image: url('./images/kieran.jpg');
+}
+
+.grid > button.all > div {
+    background-image: url('./images/all.jpg');
 }
 
 @media (orientation: portrait) {

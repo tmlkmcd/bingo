@@ -3,7 +3,6 @@ import clsx from "clsx";
 
 import "./App.css";
 import { Tick } from "./icons/Tick.tsx";
-import { Cross } from "./icons/Cross.tsx";
 import { loadPersist, savePersist } from "./storage.ts";
 
 const cardItems: string[] = [
@@ -34,13 +33,13 @@ const cardItems: string[] = [
   "Brexit is mentioned, positively or negatively",
 ];
 
+const gridSize = 5;
+const numGridItems = Math.pow(gridSize, 2);
+
 function shuffle(dod: boolean = false) {
   if (!dod) return cardItems;
   return cardItems.slice().sort(() => Math.random() - 0.5);
 }
-
-const gridSize = 5;
-const numGridItems = Math.pow(gridSize, 2);
 
 function App() {
   const [persisted] = React.useState(() => loadPersist());
@@ -74,14 +73,25 @@ function App() {
         <h1>BC plays BINGO!</h1>
         <div className="grid">
           {[...new Array(numGridItems)].map((_n, i) => {
+            const f = items[i].toLowerCase();
+
+            const c = (() => {
+              if (f.includes("felix")) return "felix";
+              if (f.includes("sarah")) return "sarah";
+              if (f.includes("lydia")) return "lydia";
+              if (f.includes("tommy")) return "tommy";
+              if (f.includes("kieran")) return "kieran";
+              return "all";
+            })();
+
             return (
               <button
-                className={clsx("bingobutton")}
+                className={clsx(gameState[i] && "active", c)}
                 onClick={() => toggle(i)}
                 key={items[i]}
               >
+                <div>{gameState[i] && "active" && <Tick />}</div>
                 <span>{items[i]}</span>
-                {gameState[i] ? <Tick /> : <Cross />}
               </button>
             );
           })}
